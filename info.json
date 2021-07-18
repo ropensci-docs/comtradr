@@ -1,0 +1,12 @@
+{
+  "commit": {
+    "commit": "1dbc9f4e3893ed1ba77b37f190501b1cf5d2dbc5",
+    "author": "Chris Muir <chrismuirrva@gmail.com>",
+    "time": "2021-07-18 14:56:13",
+    "files": 2,
+    "merge": false,
+    "message": "better error messaging\n"
+  },
+  "remote": "https://github.com/ropensci/comtradr",
+  "pkg": "comtradr"
+}

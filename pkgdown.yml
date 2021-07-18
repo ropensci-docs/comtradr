@@ -1,0 +1,10 @@
+pandoc: '2.5'
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  comtradr-vignette: comtradr-vignette.html
+last_built: 2021-07-19T12:40Z
+urls:
+  reference: https://docs.ropensci.org/comtradr/reference
+  article: https://docs.ropensci.org/comtradr/articles
+
