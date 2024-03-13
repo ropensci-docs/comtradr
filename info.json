@@ -1,0 +1,12 @@
+{
+  "commit": {
+    "commit": "c98bd9a0afee1e7a614c78ff3efd912135f32c8c",
+    "author": "paulbochtler <65470117+datapumpernickel@users.noreply.github.com>",
+    "time": "2024-02-12 18:20:52",
+    "files": 6,
+    "merge": true,
+    "message": "Merge pull request #82 from ropensci/dev\n\nDev"
+  },
+  "repo": "https://github.com/ropensci/comtradr",
+  "pkg": "comtradr"
+}
