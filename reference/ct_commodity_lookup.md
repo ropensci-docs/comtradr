@@ -1,0 +1,102 @@
+# UN Comtrade commodities database query
+
+The Comtrade API requires that searches for specific commodities be done
+using commodity codes. This is a helper function for querying the
+Comtrade commodity database. It takes as input a vector of commodities
+or commodity codes. Output is a list or vector of commodity descriptions
+or codes associated with the input search_terms. For use with the UN
+Comtrade API, full API docs can be found at
+<https://unstats.un.org/wiki/display/comtrade/>
+
+## Usage
+
+``` r
+ct_commodity_lookup(
+  search_terms,
+  return_code = FALSE,
+  commodity_classification = "HS",
+  type = "goods",
+  return_char = FALSE,
+  verbose = TRUE,
+  ignore.case = TRUE,
+  update = FALSE,
+  ...
+)
+```
+
+## Arguments
+
+- search_terms:
+
+  Commodity names or commodity codes, as a char or numeric vector.
+
+- return_code:
+
+  Logical, if set to FALSE, the function will return a set of commodity
+  descriptions along with commodity codes (as a single string for each
+  match found), if set to TRUE it will return only the commodity codes.
+  Default value is FALSE.
+
+- commodity_classification:
+
+  The trade classification scheme. Possible values for goods:
+  `c('HS','S1','S2','S3','S4','SS','B4','B5')`; for services:
+  `c('EB02','EB10','EB10S','EB')`. Default: 'HS'.
+
+- type:
+
+  The type of returned trade data. Possible values: 'goods' for trade in
+  goods, 'services' for trade in services. Default: 'goods'.
+
+- return_char:
+
+  Logical, if set to FALSE, the function will return the matches as a
+  named list, if set to TRUE it will return them as a character vector.
+  Default value is FALSE.
+
+- verbose:
+
+  Logical, if set to TRUE, a warning message will print to console if
+  any of the elements of input "search_terms" returned no matches
+  (message will indicate which elements returned no data). Default is
+  TRUE.
+
+- ignore.case:
+
+  logical, to be passed along to arg ignore.case within
+  [`grepl`](https://rdrr.io/r/base/grep.html). Default value is TRUE.
+
+- update:
+
+  If TRUE, downloads possibly updated reference tables from the UN.
+  Default: FALSE.
+
+- ...:
+
+  additional args to be passed along to
+  [`grepl`](https://rdrr.io/r/base/grep.html).
+
+## Value
+
+A list or character vector of commodity descriptions and/or commodity
+codes that are matches with the elements of "search_terms".
+
+## Details
+
+This function uses regular expressions (regex) to find matches within
+the commodity DB. This means it will treat as a match any commodity
+description that contains the input search term. For more on using regex
+within R, see
+<https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html>
+
+## See also
+
+[`grepl`](https://rdrr.io/r/base/grep.html)
+
+## Examples
+
+``` r
+if (FALSE) { # interactive()
+comtradr::ct_commodity_lookup("wine")
+}
+```

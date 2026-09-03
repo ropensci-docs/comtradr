@@ -1,0 +1,97 @@
+# Caching requests from the UN Comtrade API
+
+## Caching requests from the UN Comtrade API
+
+There is four reasons why we might want to use caching for our requests
+to the UN Comtrade API:
+
+- The UN Comtrade API at times can be a bit slow 🐌
+- Free users only have a limited amount of requests 💸
+- We might want to insulate our analysis against updates to the official
+  data 📦
+- It saves energy and is climate friendly to not repeat requests that
+  return the same data every time. 🌍
+
+The package offers a caching option, that is fairly easy to use.
+
+### The basics of caching 💽
+
+When you set the respective argument to `TRUE`, a directory named
+`comtradr` will be set up in your cache directory. This is determined by
+the `tools::R_user_dir(which = 'cache')` function. It has the default
+values for a cache as used by
+[`cachem::cache_disk`](https://cachem.r-lib.org/reference/cache_disk.html).
+
+See here: <https://cachem.r-lib.org/reference/cache_disk.html>
+
+and
+here:<https://stat.ethz.ch/R-manual/R-devel/library/tools/html/userdir.html>
+
+``` r
+
+library(comtradr)
+#### Now
+q <- ct_get_data(reporter = "USA", 
+               partner = c("DEU", "FRA", "JPN", "MEX"), 
+               flow_direction = "import",
+               start_date = 2020,
+               end_date = 2023,
+               cache = TRUE) # <----- set this argument to TRUE
+```
+
+If you want to modify these parameters, you need to set environment
+variables. You can use the `usethis::edit_r_environ(scope = 'project)`
+function to set them only for your current project.
+
+ℹ️ Restart your R Session after setting the environment variables! 💡
+
+The parameters are:
+
+- `COMTRADR_CACHE_MAX_SIZE` = Maximum size of the cache, in bytes. If
+  the cache exceeds this size, cached objects will be removed according
+  to the value of the `evict`. Use `Inf` for no size limit. The default
+  is 1 gigabyte.
+
+- `COMTRADR_CACHE_MAX_AGE` = Maximum age of files in cache before they
+  are evicted, in seconds. Use `Inf` for no age limit.
+
+- `COMTRADR_CACHE_MAX_N` = Maximum number of objects in the cache. If
+  the number of objects exceeds this value, then cached objects will be
+  removed according to the value of `evict`. Use `Inf` for no limit of
+  number of items.
+
+- `R_USER_CACHE_DIR` = Directory where the cached files will be saved.
+
+See here for the details on pruning and other functions of `cachem`:
+<https://cachem.r-lib.org/reference/cache_disk.html>
+
+### Careful with outdated data! ⚠️
+
+The current default for the cache age is set to `Inf`, hence when you
+have requested data once, it will never downloaded again. For recent
+data, this can be a very bad idea, as the United Nations might update
+their data and you will only work with outdated data.
+
+The recommended way is to set the `COMTRADR_CACHE_MAX_AGE` environment
+variable as described above. E.g.: to `60*60*24*365` for one year.
+
+To find your cache and empty it by yourself, you can do:
+
+``` r
+
+## to delete all files in your cache
+tools::R_user_dir('comtradr', which = 'cache') |> 
+  fs::dir_delete()
+```
+
+and
+
+``` r
+
+## to delete all files in your cache
+tools::R_user_dir('comtradr_bulk', which = 'cache') |> 
+  fs::dir_delete()
+```
+
+You will have to restart `comtradr` to re-create the cache and be able
+to use the package.

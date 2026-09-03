@@ -1,0 +1,13 @@
+pandoc: 3.8.3
+pkgdown: 2.2.1
+pkgdown_sha: ~
+articles:
+  bulk_files: bulk_files.html
+  caching: caching.html
+  comtradr: comtradr.html
+  large_data: large_data.html
+  transition: transition.html
+last_built: 2026-09-03T10:26Z
+urls:
+  reference: https://docs.ropensci.org/comtradr/reference
+  article: https://docs.ropensci.org/comtradr/articles

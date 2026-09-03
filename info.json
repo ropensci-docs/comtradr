@@ -1,0 +1,13 @@
+{
+  "commit": {
+    "commit": "143d7831909be35e174d110f76219a85b674c43f",
+    "author": "paul bochtler <65470117+datapumpernickel@users.noreply.github.com>",
+    "time": "2026-07-30T22:38:31Z",
+    "files": 4,
+    "merge": false,
+    "message": "prepare CRAN release 1.0.6\n"
+  },
+  "repo": "https://github.com/ropensci/comtradr",
+  "pkg": "comtradr",
+  "time": "2026-09-03T10:26:52Z"
+}
