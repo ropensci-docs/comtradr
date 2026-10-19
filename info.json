@@ -1,0 +1,13 @@
+{
+  "commit": {
+    "commit": "56e547d376381a6d42cfc4b5cb2f3797eaad43d8",
+    "author": "paulbochtler <65470117+datapumpernickel@users.noreply.github.com>",
+    "time": "2026-09-19T15:00:55Z",
+    "files": 24,
+    "merge": true,
+    "message": "Merge pull request #105 from ropensci/dev\n\nadd ct_get_trade_matrix() for the estimated trade matrix (1.1.0)"
+  },
+  "repo": "https://github.com/ropensci/comtradr",
+  "pkg": "comtradr",
+  "time": "2026-10-19T11:27:23Z"
+}
